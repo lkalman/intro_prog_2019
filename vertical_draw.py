@@ -1,7 +1,9 @@
+from board_class import Board
+
 ## Strings for drawing the board:
 colours = ["", ""]
-colours[RED] = "R"
-colours[BLACK] = "B"
+colours[Board.RED] = "R"
+colours[Board.BLACK] = "B"
 
 ################
 ## Board printing
@@ -38,11 +40,11 @@ def draw_board( board ):
     for i in range( 12 ):
         ## Number of checkers at the two points
         ## in this row:
-        checkers1 = board_repr.number_of_pieces( board, 11 - i )
-        checkers2 = board_repr.number_of_pieces( board, 12 + i )
-        print_point( checkers1, board_repr.colour( board, 11 - i ) )
+        checkers1 = board.number_of_pieces( 11 - i )
+        checkers2 = board.number_of_pieces( 12 + i )
+        print_point( checkers1, board.colour( 11 - i ) )
         print( column_sep, end="" )
-        print_point( checkers2, board_repr.colour( board, 12 + i ) )
+        print_point( checkers2, board.colour( 12 + i ) )
         ## Don't forget the newline at the end of each line:
         print()
 
