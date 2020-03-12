@@ -5,11 +5,6 @@ import tkinter as tk
 ## e.g., like this:
 root = tk.Tk() # `Tk()` is a constructor exported by `tkinter`
 
-## maximize window:
-screenheight = root.winfo_screenheight()
-screenwidth = root.winfo_screenwidth()
-root.geometry( "%dx%d" % (screenwidth, screenheight) )
-
 ## Add a frame to the root window just for the fun of it:
 frame = tk.Frame( root )  # the parameter is the _parent_ in which
                           # it will appear
