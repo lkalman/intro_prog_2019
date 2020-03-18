@@ -38,6 +38,8 @@ class NameButton( tk.Button ):
         # invoke tk.Button's own initializer:
         tk.Button.__init__( self, parent )
         self.config( text=text )
+        ## instead of the two lines above, one could also write:
+        ## tk.Button.__init__( self, parent, text=text )
         # add our own extension:
         self.name = text   
     
