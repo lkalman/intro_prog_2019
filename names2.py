@@ -24,20 +24,24 @@ names = [
 
 namesMarked = []
 
-## add names buttons with the same click handler:
-def handleNameClick( event ):
-    event.widget.config( background = "#cdcdcd" )
-    namesMarked.append( event.widget.name )
-    print( namesMarked )
+def produceNameClickHandler( name ):
+    ## define a *closure*:
+    def newProcedure( event ):
+        nonlocal name
+        event.widget.config( background = "#cdcdcd" )
+        namesMarked.append( name )
+        print( namesMarked )
+    return newProcedure
     
 nameButtons = {}
 
 for i in range( len( names ) ):
-    button = NameButton( frame, names[i] )  # tk.Button( frame, text = names[i] )
+    button = tk.Button( frame, text = names[i] )
     nameButtons[names[i]] = button
     button.grid( column=0, row=i )
     ## problem: should have a separate handler for each new button!
-    button.bind( "<Button-1>", handleNameClick )
+    handler = produceNameClickHandler( names[i] )
+    button.bind( "<Button-1>", handler )
 
 ## add a button to the frame window (of course, `text` is a
 ## useful keyword parameter when we use a button)"
